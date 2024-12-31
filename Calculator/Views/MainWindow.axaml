@@ -7,14 +7,67 @@
         x:Class="Calculator.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Calculator">
+        Title="Calculator"
+        Width="240"
+        Height="330">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
+  <Window.Styles>
+    <Style Selector="Button">
+      <Setter Property="Width" Value="50"/>
+      <Setter Property="Height" Value="50"/>
+      <Setter Property="Margin" Value="2"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="CornerRadius" Value="25"/>
+    </Style>
+  </Window.Styles>
+
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+    <vm:MainWindowViewModel />
+  </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <StackPanel Margin="10">
+    <TextBlock Height="40"
+               HorizontalAlignment="Right"
+               Text="{Binding Display}"
+               FontSize="24"/>
+    <StackPanel Orientation="Horizontal">
+      <Button Command="{Binding ClearCommand}">AC</Button>
+      <Button Command="{Binding DelCommand}">
+        <PathIcon Data="{StaticResource backspace_regular}"></PathIcon>
+      </Button>
+      <Button Command="{Binding OperatorCommand}" CommandParameter="%">%</Button>
+      <Button Command="{Binding OperatorCommand}" CommandParameter="÷">÷</Button>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <Button Command="{Binding NumberCommand}" CommandParameter="7">7</Button>
+      <Button Command="{Binding NumberCommand}" CommandParameter="8">8</Button>
+      <Button Command="{Binding NumberCommand}" CommandParameter="9">9</Button>
+      <Button Command="{Binding OperatorCommand}" CommandParameter="X">x</Button>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <Button Command="{Binding NumberCommand}" CommandParameter="4">4</Button>
+      <Button Command="{Binding NumberCommand}" CommandParameter="5">5</Button>
+      <Button Command="{Binding NumberCommand}" CommandParameter="6">6</Button>
+      <Button Command="{Binding OperatorCommand}" CommandParameter="-">-</Button>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <Button Command="{Binding NumberCommand}" CommandParameter="1">1</Button>
+      <Button Command="{Binding NumberCommand}" CommandParameter="2">2</Button>
+      <Button Command="{Binding NumberCommand}" CommandParameter="3">3</Button>
+      <Button Command="{Binding OperatorCommand}" CommandParameter="+">+</Button>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <Button IsEnabled="False">
+        <PathIcon Data="{StaticResource calculator_regular}" />
+      </Button>
+      <Button Command="{Binding NumberCommand}" CommandParameter="0">0</Button>
+      <Button Command="{Binding DotCommand}">.</Button>
+      <Button Command="{Binding EqualCommand}">=</Button>
+    </StackPanel>
+
+  </StackPanel>
 
 </Window>
