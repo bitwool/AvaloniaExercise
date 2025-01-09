@@ -12,6 +12,10 @@
         Width="240"
         Height="330">
 
-  <views:BasicCalculatorView DataContext="{Binding Calculator}"/>
+  <!-- <views:BasicCalculatorView DataContext="{Binding Calculator}"/> -->
+  <!-- <views:ProgrammerView DataContext="{Binding Programmer}"/> -->
+  <StackPanel>
+    <ContentControl Content="{Binding CurrentView}" />
+  </StackPanel>
 
 </Window>

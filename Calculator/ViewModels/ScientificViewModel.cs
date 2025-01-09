@@ -3,9 +3,19 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Calculator.ViewModels;
 
-public partial class BasicCalculatorViewModel : ObservableObject
+public partial class ScientificViewModel : ViewModelBase
 {
     [ObservableProperty] private string _display = "0";
+
+
+    private readonly MainWindowViewModel _mainWindowViewModel;
+
+    public ScientificViewModel(MainWindowViewModel mainWindowViewModel)
+    {
+        _mainWindowViewModel = mainWindowViewModel;
+        SwitchViewCommand = mainWindowViewModel.SwitchViewCommand;
+    }
+    public IRelayCommand<string> SwitchViewCommand { get; set; }
 
     private double _lastNumber = 0;
     private string _currentOperator = "";

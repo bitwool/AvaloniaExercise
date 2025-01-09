@@ -1,0 +1,116 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Calculator.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
+             x:Class="Calculator.Views.ScientificView"
+             x:DataType="vm:ScientificViewModel">
+  <UserControl.Styles>
+    <Style Selector="Button">
+      <Setter Property="Width" Value="50" />
+      <Setter Property="Height" Value="50" />
+      <Setter Property="Margin" Value="2" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="CornerRadius" Value="25" />
+    </Style>
+  </UserControl.Styles>
+
+  <StackPanel Margin="10">
+    <TextBlock Height="40"
+               HorizontalAlignment="Right"
+               Text="{Binding Display}"
+               FontSize="24" />
+    <StackPanel Orientation="Horizontal">
+      <StackPanel Name="scientific">
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding OperatorCommand}" CommandParameter="(">(</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter=")">)</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="%">mc</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="÷">m+</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="÷">m-</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="÷">mr</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding NumberCommand}" CommandParameter="7">2nd</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="8">x2</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="9">x3</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="X">xy</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="X">ex</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="X">10x</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding NumberCommand}" CommandParameter="4">1/x</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="5">√</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="6">√</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="-">√</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="-">ln</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="-">log10</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding NumberCommand}" CommandParameter="1">x!</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="2">sin</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="3">cos</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="+">tan</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="+">e</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="+">EE</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button
+            Name="ShowMenuButton"
+            Click="ShowMenu">
+            <PathIcon Data="{StaticResource calculator_regular}" />
+            <Button.ContextMenu>
+              <ContextMenu>
+                <MenuItem Header="Basic" Command="{Binding SwitchViewCommand}" CommandParameter="Basic" />
+                <MenuItem Header="Scientific" Command="{Binding SwitchViewCommand}" CommandParameter="Scientific" />
+              </ContextMenu>
+            </Button.ContextMenu>
+          </Button>
+          <Button Command="{Binding DotCommand}">sinh</Button>
+          <Button Command="{Binding EqualCommand}">cosh</Button>
+          <Button Command="{Binding EqualCommand}">tanh</Button>
+          <Button Command="{Binding EqualCommand}">π</Button>
+          <Button Command="{Binding EqualCommand}">Rad</Button>
+        </StackPanel>
+      </StackPanel>
+      <StackPanel Name="Baisc">
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding ClearCommand}">AC</Button>
+          <Button Command="{Binding DelCommand}">
+            <PathIcon Data="{StaticResource backspace_regular}"></PathIcon>
+          </Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="%">%</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="÷">÷</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding NumberCommand}" CommandParameter="7">7</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="8">8</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="9">9</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="X">x</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding NumberCommand}" CommandParameter="4">4</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="5">5</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="6">6</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="-">-</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding NumberCommand}" CommandParameter="1">1</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="2">2</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="3">3</Button>
+          <Button Command="{Binding OperatorCommand}" CommandParameter="+">+</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding OperatorCommand}" CommandParameter="+">Rand</Button>
+          <Button Command="{Binding NumberCommand}" CommandParameter="0">0</Button>
+          <Button Command="{Binding DotCommand}">.</Button>
+          <Button Command="{Binding EqualCommand}">=</Button>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </StackPanel>
+
+
+</UserControl>
